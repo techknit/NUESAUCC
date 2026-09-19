@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>NUESA-UCC Student Portal</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .navbar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 14px 20px;
+                backdrop-filter: blur(12px);
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+            }
+            .nav-brand {
+                font-weight: 700;
+                font-size: 13px;
+                letter-spacing: 0.3px;
+                line-height: 1.3;
+                color: #ffffff;
+            }
+            .menu-wraper {
+                margin-left: auto;
+                position: relative;
+                display: inline-block;
+            }
+            .dots-btn {
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+            .menu-item {
+                display: block;
+                padding: 12px 16px;
+                text-decoration: none;
+                color: #ffffff;
+                font-size: 14px;
+                font-weight: 500;
+                transition: all 0.2s ease-in-out;
+            }
+            .menu-item:hover {
+                background-color: #f1f1f1;
+                background-color: rgba(29, 161, 83, 0.15);
+                color: #1da153;
+                padding-left: 24px;
+            }
+            .menu-item.active {
+                font-weight: bold;
+                background-color: #a78575;
+            }
+            .menu-item.danger {
+                color: red;
+                border-top: 1px solid #eee;
+            }
+            .dropdown.hidden {
+                display: none;
+            }
+            .dropdown {
+                position: absolute;
+                margin-top: 4px;
+                z-index: 1000;
+                top: 0px;
+                right: 0px;
+                width: 250px;
+                height: auto;
+                border-radius: 8px;
+                background: linear-gradient(
+                    135deg,
+                    rgba(114, 107, 107, 0.45) 0%,
+                    rgba(92, 85, 85, 0.2) 40%,
+                    rgba(240, 240, 240, 0.15) 60%,
+                    rgba(55, 56, 59, 0.35) 100%
+                ) !important;
+                background-color: #000000;
+                backdrop-filter: blur(20px) !important;
+                -webkit-backdrop-filter: blur(20px) !important;
+                border: 1px solid rgba(225, 225, 225, 0.5) !important;
+                box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.3) !important;
+            }
+            menu-item:hover {
+                background-color: rgba(225, 225, 225, 0.3);
+            }
+            body {
+                min-height: 100vh;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+                background: linear-gradient(180deg, rgba(6, 12, 8, 0.94) 0%, rgba(3, 7, 4, 0.98) 100%), 
+                            url('https://unsplash.com');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                position: relative;
+                overflow-x: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="portal-section">    
+            <nav class="navbar">
+                <img src="logo.png" style="width: 50px; height: 50px;">
+                <div class="nav-brand" >Nigerian Universities Engineering Students Association
+                    <br style="color: #01c21b;">NUESA_UCC</br>
+                </div>
+                <div class="menu-wraper">
+                    <button id="dots-btn" class="dots-btn">&#8942;</button>
+                    <div id="dropdown" class="dropdown hidden">
+                        <a href="updates.html" class="menu-item">Latest News and Updates 📰</a>
+                        <a href="payments.html" class="menu-item">Make payments</a>
+                        <a href="voting.html" class="menu-item active">Voting polls</a>
+                        <br>
+                        <a href="https://wa.me/2348097730000" class="menu-item">Contact us ☎️</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <script>
+            const dotsbtn = document.getElementById('dots-btn');
+            const dropdownmenu = document.getElementById('dropdown');
+
+            dotsbtn.addEventListener('click', function(event) {
+                dropdownmenu.classList.toggle('hidden');
+                event.stopPropagation();
+            });
+            window.addEventListener('click',function(){
+                if (!dropdownmenu.classList.contains('hidden')){
+                    dropdownmenu.classList.add('hidden');
+                }
+            });
+
+            function switchPage(pageId) {
+                console.log("switching to page: " + pageId);
+            }
+        </script>
+    </body>
+</html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUESA Section</title>
+    <style>
+        .container {
+            gap: 10px;
+            flex-wrap: wrap;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        .moving-text-container {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+            background: linear-gradient(90deg, #7c3201, #01c21b);
+        }
+        .moving-text {
+            display: inline-block;
+            padding-left: 100%;
+            animation: loopText 10s linear infinite;
+        }
+        @keyframes loopText {
+            0%  {
+                transform: translate3d(0, 0, 0);
+            }
+            100%{
+                transform: translate3d(-100%, 0, 0);
+            }
+        }
+        .bar-green {
+                width: 35%;
+                height: 4px;
+                border-radius: 2px;
+                background: linear-gradient(90deg, 
+                    #0e832b 0%, 
+                    #0e832b 40%, 
+                    #e0e0e0 50%, 
+                    #0e832b 60%, 
+                    #0e832b 100%
+                );
+                background-size: 200% 100%;
+                animation: moveSilver 2.5s linear infinite;
+            }
+            @keyframes moveSilver {
+                0% {
+                    background-position: 200% 0;
+                }
+                100% {
+                    background-position: -200% 0;
+            }
+        }
+        .bar-red {
+                width: 20%;
+                height: 4px;
+                border-radius: 2px;
+                background: linear-gradient(90deg, 
+                    #83430e 0%, 
+                    #83290e 40%, 
+                    #e0e0e0 50%, 
+                    #83330e 60%, 
+                    #83430e 100%
+                );
+                background-size: 200% 100%;
+                animation: moveSilver 2.5s linear infinite;
+            }
+            @keyframes moveSilver {
+                0% {
+                    background-position: 200% 0;
+                }
+                100% {
+                    background-position: -200% 0;
+            }
+        }
+        .main-heading {
+            font-size: 50px;
+            font-weight: 1000;
+            line-height: 1.1;
+            margin: 0 0 24px 0;
+            letter-spacing: -0.5px;
+            text-align: left;
+            font-family: cursive;
+        }
+        .littlewriteups {
+            color: #02c737;
+            text-align: left;
+            font-family: monospace;
+            font-size: small;
+            font-weight: 1000;
+        }
+        .text-green {
+            color: #02c737;
+            text-align: left;
+        }
+        .description {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #7edf93;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+        .tag-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .engineering-tag {
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 13px;
+            color: #cccccc;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 48px;
+        }
+        .btn-primary {
+            background-color: #119e36;
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: #0e832b;
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: border-color 0.2s;
+        }
+        .btn-secondary:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        .divider {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 32px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .stat-item h3 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #119e36;
+            margin: 0 0 6px 0;
+        }
+        .stat-item p {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #808080;
+            margin: 0;
+            line-height: 1.3;
+        }
+        .slider-container {
+        position: relative;
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        }
+        .slider-viewport {
+        width: 100%;
+        overflow: hidden;
+        border-radius: 8px;
+        }
+        .slider-track {
+        display: flex;
+        width: 100%;
+        transition: transform 0.5s ease-in-out;
+        }
+        .slider-track img {
+        width: 100%;
+        flex-shrink: 0;
+        object-fit: normal;
+        }
+        .arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        font-size: 24px;
+        padding: 12px 16px;
+        cursor: pointer;
+        z-index: 10;
+        border-radius: 50%;
+        transition: background-color 0.3s;
+        }
+        .arrow:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+        }
+        .prev-btn {
+        left: 15px;
+        }
+        .next-btn {
+        right: 15px;
+        }
+    </style>
+</head>
+<br>
+<br>
+<body class="container">
+    <p class="littlewriteups"> Students portal </p>
+    <div class="content-container">
+        <div class="accent-bars">
+            <div class="bar-green"></div>
+            <br>
+            <div class="bar-red"></div>
+        </div>
+        <br>
+        <h1 class="main-heading">
+            <span class="text-green">Empowering</span><br>
+            Engineers
+        </h1>
+        <p class="description">
+            NUESA-UCC (Nigerian Universities Engineering Students Association, University of Calabar Chapter) serves as the primary student wing of the Nigerian Society of Engineers on campus.
+        </p>
+        <div class="tag-container">
+            <span class="engineering-tag">⏃ Civil</span>
+            <span class="engineering-tag">⚙ Mechanical</span>
+            <span class="engineering-tag">⚡ Electrical</span>
+            <span class="engineering-tag">Petroleum</span>
+            <span class="engineering-tag">Chemical</span>
+            <span class="engineering-tag">Agric</span>
+            <span class="engineering-tag">Computer</span>
+        </div>
+        <div class="slider-container">
+        <button class="arrow prev-btn" onclick="moveSlide(-1)">&#10094;</button>
+        <div class="slider-viewport">
+            <div class="slider-track">
+            <img src="logo.png" alt="Image 1">
+            <img src="logo1.png" alt="Image 2">
+            </div>
+        </div>
+        <button class="arrow next-btn" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+        <script>
+            let currentIndex = 0;
+
+            function moveSlide(direction) {
+            const track = document.querySelector('.slider-track');
+            const totalSlides = document.querySelectorAll('.slider-track img').length;
+            currentIndex += direction;
+            if (currentIndex >= totalSlides) {
+                currentIndex = 0;
+            } else if (currentIndex < 0) {
+                currentIndex = totalSlides - 1;
+            }
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+        </script>
+        <br>
+        <div class="btn-container">
+            <a href="updates.html" class="btn-primary">Latest News ans Updates &rarr;</a>
+            <a href="payments.html" class="btn-secondary"> Payments </a>
+        </div>
+        <hr class="divider">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>7</h3>
+                <p>University<br>Departments</p>
+            </div>
+            <div class="stat-item">
+                <h3>1000+<span style="font-size: 14px; font-weight:500;">Registered</span></h3>
+                <p>University<br>Students</p>
+            </div>
+            <div class="stat-item">
+                <h3>9</h3>
+                <p>ExCo<br>Members</p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="moving-text-container">
+        <span class="moving-text"> Nigerian Universities Engineering Students Association - University Of Calabar Chapter NUESA-UCC Official Website</span>
+    </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bounded Image Card</title>
+    <style>
+        .image-cards {
+            border: 1px solid #142217;
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-top: 50px;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .image-card {
+            border: 1px solid #142217;
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-top: 10px;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+            
+        }
+        .image-cards.visible, .image-card.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .card-text {
+            margin-top: 20px;
+            font-size: 14px;
+            line-height: 1.4;
+            color: #cccccc;
+            text-align: center;
+            word-wrap: break-word;
+        }
+        .carddescriptionl {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #0eb131;
+            text-align: center;
+            width: 100%;
+            margin: 0 50px 0 0;
+            font-weight: 800;
+            font-family: cursives;
+            padding-top: 20px;
+        }
+        .executive-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            justify-content: center;
+        }
+        .image-cardimg {
+            width: 100%;
+        }
+        .descriptionl {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #7edf93;
+            margin-bottom: 32px;
+            text-align: left;
+            margin: 0 50px 0 0;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+        .descriptionl.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .hiscription {
+            font-size: 50px;
+            font-weight: 1000;
+            line-height: 1.1;
+            margin: 0 0 0 0;
+            letter-spacing: -0.5px;
+            text-align: left;
+            font-family: sans-serif;
+        }
+        .littlewriteups {
+            color: #02c737;
+            text-align: left;
+            font-family: monospace;
+            font-size: small;
+            font-weight: 1000;
+            padding-top: 100px;
+        }
+        .text-container {
+            background-color: transparent;
+            color: #ffffff;
+            border: 1px solid rgba(245, 20, 20, 0.2);
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+        .text-container.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .bar-green {
+                width: 35%;
+                height: 4px;
+                border-radius: 2px;
+                background: linear-gradient(90deg, 
+                    #0e832b 0%, 
+                    #0e832b 40%, 
+                    #e0e0e0 50%, 
+                    #0e832b 60%, 
+                    #0e832b 100%
+                );
+                background-size: 200% 100%;
+                animation: moveSilver 2.5s linear infinite;
+            }
+            @keyframes moveSilver {
+                0% {
+                    background-position: 200% 0;
+                }
+                100% {
+                    background-position: -200% 0;
+            }
+        }
+        .bar-red {
+                width: 20%;
+                height: 4px;
+                border-radius: 2px;
+                background: linear-gradient(90deg, 
+                    #83430e 0%, 
+                    #83290e 40%, 
+                    #e0e0e0 50%, 
+                    #83330e 60%, 
+                    #83430e 100%
+                );
+                background-size: 200% 100%;
+                animation: moveSilver 2.5s linear infinite;
+            }
+            @keyframes moveSilver {
+                0% {
+                    background-position: 200% 0;
+                }
+                100% {
+                    background-position: -200% 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p class="littlewriteups">About NUESA_UCC</p>
+    <div class="bar-green"></div>
+    <br>
+    <div class="bar-red"></div>
+    <br>
+    <p class="hiscription">NUESA_UCC</p>
+    <p class="descriptionl">The Nigerian Universities Engineering Students’ Association, University of Calabar Chapter (NUESA-UCC) is the vibrant, unified umbrella body representing the next generation of technical innovators within the Faculty of Engineering and Technology (FET) at the University of Calabar (UNICAL). Guided by its amended NUESA-UCC Constitution, which firmly outlines its democratic framework, student welfare goals, and legislative processes, the chapter bridges complex classroom theories with real-world engineering environments. Under the dynamic leadership of the Profectus Administration led by President Sen. Eneji Paul Ekune, the chapter heavily emphasizes technical brilliance, academic support, and smooth professional integration across multiple disciplines—ranging from Civil and Mechanical to Computer Engineering. A hallmark of the association is its dedication to transitioning scholars into field professionals, celebrated through historic milestones like the official induction of graduating classes into the prestigious Nigerian Society of Engineers (NSE) at the school's Senate Chambers. Communication and student engagement remain stellar via the modern NUESA-UCC Media initiative launched by the Office of the Director of Information (led by Comr. Chilaka, Princewill Kelechi) to streamline information flow across the faculty. Balancing rigorous lab work with community spirit, the association actively rounds out the student experience by hosting networking events, end-of-semester social gatherings, and collaborations that foster a true family culture among Malabites and Malabresses in engineering.</p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p class="littlewriteups">Fields of coverage</p>
+    <div class="bar-green"></div>
+    <br>
+    <div class="bar-red"></div>
+    <br>
+    <p class="hiscription" style="text-align: center;">Engineering Disciplines</p>
+    <p class="description" style="text-align: center;">NUESA_UCC represents Engineering students across all Disciplines in the faculty of engineering University of calaber -UNICAL</p>
+    <div class="text-container">
+        <p style="font-size: x-large; font-weight: 1000px; font-family: monospace;">🌽<br>Agric Engineering</p>
+        <p class="description" style="text-align: center;">Encompasses the application of other parts of engineering in agracture producing healthy agricultural produce in a fast, easy and efficient way.</p>
+    </div>
+    <br>
+    <div class="text-container">
+        <p style="font-size: x-large; font-weight: 1000px; font-family: monospace;">🧪<br>Chemical Engineering</p>
+        <p class="description" style="text-align: center;">Covers the application of chemistry and physics to industrial processes, oil synthesis and  manufacturing</p>
+    </div>
+    <br>
+    <div class="text-container">
+        <p style="font-size: x-large; font-weight: 1000px; font-family: monospace;">⏃<br>Civil Engineering</p>
+        <p class="description" style="text-align: center;">Deals with designs of infrastructure such as roads, bridges, buildings, and water systems</p>
+    </div>
+    <br>
+    <div class="text-container">
+        <p style="font-size: x-large; font-weight: 1000px; font-family: monospace;">🖥️<br>Computer Engineering</p>
+        <p class="description" style="text-align: center;">Bridges hardware design and software development across all computing fields and embeded engineering</p>
+    </div>
+    <br>
+    <div class="text-container">
+        <p style="font-size: x-large; font-weight: 1000px; font-family: monospace;">⚡<br>Electrical Engineering</p>
+        <p class="description" style="text-align: center;"> Deals with the development and integration of power systems, electronic circuits, telecommunication devices, and control systems</p>
+    </div>
+    <br>
+    <div class="text-container">
+        <p style="font-size: x-large; font-weight: 1000px; font-family: monospace;">⚙️<br>Mechanical Engineering</p>
+        <p class="description" style="text-align: center;">Focuses on manufacturing processes, industrial systems, and machines</p>
+    </div>
+    <br>
+    <div class="text-container">
+        <p style="font-size: x-large; font-weight: 1000px; font-family: monospace;">⛽<br>Petroleum Engineering</p>
+        <p class="description" style="text-align: center;">Focuses on the exploration and extraction of oil and gas resources across the worldand efficient management of these resources</p>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p class="littlewriteups">NUESA-UCC officials</p>
+    <div class="bar-green"></div>
+    <br>
+    <div class="bar-red"></div>
+    <br>
+    <p class="hiscription">Executive Council</p>
+    <p class="description">The following are the core duly elected Executive officials of the NUESA_UCC;</p>
+    <div class="image-cards">
+        <img src="presido.jpg" alt="Display Image">
+        <p class="carddescriptionl"> Sen. Eneji Paul Ekunke (SMNSE)<br>Mechanical Engineering Department</p>
+        <div class="card-text">
+            NUESA UCC Executive President of the 2025/2026 Profectus Admintration<br>📞 09161549804
+        </div>
+    </div>
+    <div class="executive-grid">
+    <div class="image-card">
+        <img src="sta.png" alt="Display Image">
+        <p class="carddescriptionl">Comr. Blessing Olofu<br>Electrical & Electronic Engineering Department</p>
+        <div class="card-text">
+            NUESA UCC Executive Vice President of the 2025/2026 Profectus Admintration<br>📞 07038140893
+        </div>
+    </div>
+    <div class="image-card">
+        <img src="sta.png" alt="Display Image">
+        <p class="carddescriptionl">Comr. Michael Ekpo Boco<br>Mechanical Engineering Department</p>
+        <div class="card-text">
+            NUESA UCC Executive General Secretary of the 2025/2026 Profectus Admintration<br>📞 09138458616
+        </div>
+    </div>
+    <div class="image-card">
+        <img src="sta.png" alt="Display Image">
+        <p class="carddescriptionl">Comr. Akponi James<br>Electrical & Electronic Engineering Department</p>
+        <div class="card-text">
+            NUESA UCC Executive Deputy Secretary General of the 2025/2026 Profectus Admintration<br>📞 09130134969
+        </div>
+    </div>
+    <div class="image-card">
+        <img src="sta.png" alt="Display Image">
+        <p class="carddescriptionl">Comr. Thonia Victor<br>Computer Engineering Department</p>
+        <div class="card-text">
+            NUESA UCC Executive Financial Secretary of the 2025/2026 Profectus Admintration<br>📞 07026506155
+        </div>
+    </div>
+    <div class="image-card">
+        <img src="treasurer.jpg" alt="Display Image">
+        <p class="carddescriptionl">Comr. Emmanuel Utip Fred<br>Electrical & Electronic Engineering Department</p>
+        <div class="card-text">
+            NUESA UCC Executive Treasurer of the 2025/2026 Profectus Admintration<br>📞 09031388868
+        </div>
+    </div>
+    <div class="image-card">
+        <img src="pro.jpg" alt="Display Image">
+        <p class="carddescriptionl">Comr. Chilaka Princewill Kelechi<br>Electrical & Electronic Engineering Department</p>
+        <div class="card-text">
+            NUESA UCC Executive Public relations Officer of the 2025/2026 Profectus Admintration<br>📞 09123219240
+        </div>
+    </div>
+    <div class="image-card">
+        <img src="directorofwelfare.jpg" alt="Display Image">
+        <p class="carddescriptionl">Comr. Innocent Chimaobi<br>Civil Engineering Department</p>
+        <div class="card-text">
+            NUESA UCC Executive Director of welfare of the 2025/2026 Profectus Admintration<br>📞 09075584701
+        </div>
+    </div>
+    <div class="image-card">
+        <img src="directorofsocials.jpg" alt="Display Image">
+        <p class="carddescriptionl">Comr. Ilo Sydney Chukwudubemi<br>Mechanical Engineering Department</p>
+        <div class="card-text">
+            NUESA UCC Executive Director of Socials of the 2025/2026 Profectus Admintration<br>📞 09123219240
+        </div>
+    </div>
+    <div class="image-card">
+        <img src="directorofsports.jpg" alt="Display Image">
+        <p class="carddescriptionl">Comr. Adedokun Peter Oluwaseyi<br></p>
+        <div class="card-text">
+            NUESA UCC Executive Director of Sports of the 2025/2026 Profectus Admintration<br>📞 08105299037
+        </div>
+    </div>
+    </div>
+    <br>
+    <br>
+    <div class="image-cards">
+        <img src="engrs.jpg" alt="Display Image">
+        <p class="carddescriptionl">Engr. Stanley Nwoziri<br>Mechanical Engineering Department</p>
+        <div class="card-text">
+            Student staff adviser of the NUESA UCC Profectus administration<br>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p class="littlewriteups">NUESA-UCC parliamentarians</p>
+    <div class="bar-green"></div>
+    <br>
+    <div class="bar-red"></div>
+    <br>
+    <p class="hiscription">Parliamentarians</p>
+    <p class="description">The following are the members of the NUESA_UCC 4th parliament;</p>
+    <div class="executive-grid">
+    <div class="image-card">
+        <img src="speaker.jpg" alt="Display Image">
+        <p class="carddescriptionl">Rt. Hon. Victor Agba<br>Petroleum Engineering Constituency</p>
+        <div class="card-text">
+            Speaker of the NUESA UCC 4th Parliament<br>
+        </div>
+    </div>
+    <div class="image-card">
+        <img src="deputyspeaker.jpg" alt="Display Image">
+        <p class="carddescriptionl">Hon. Ogar Blessing Ndoma<br>Chemical Engineering Constituency</p>
+        <div class="card-text">
+            Deputy Speaker of the NUESA UCC 4th Parliament<br>
+        </div>
+    </div>
+    <div class="image-card">
+        <img src="scribe.jpg" alt="Display Image">
+        <p class="carddescriptionl">Hon. Eli Jude Chukwuzayem<br>Mechanical Engineering Constituency</p>
+        <div class="card-text">
+            Scribe of the NUESA UCC 4th Parliament<br>
+        </div>
+    </div>
+    <div class="image-card">
+        <img src="sergentatarm.jpg" alt="Display Image">
+        <p class="carddescriptionl">Hon. Oche Isarel Abu<br>Civil Engineering Constituency</p>
+        <div class="card-text">
+            Sergent ar arm of the NUESA UCC 4th Parliament<br>
+        </div>
+    </div>
+    <div class="image-card">
+        <img src="member1.jpg" alt="Display Image">
+        <p class="carddescriptionl">Hrm. Hon. Jasper Obong Nelson<br>Chemical Engineering Constituency</p>
+        <div class="card-text">
+            Member of the NUESA UCC 4th Parliament<br>
+        </div>
+    </div>
+    <div class="image-card">
+        <img src="ukanwa.jpg" alt="Display Image">
+        <p class="carddescriptionl">Hon. Ukankwa Oluebube Joy<br>Agricultural and Bioresource Engineering Constituency</p>
+        <div class="card-text">
+            Member of the NUESA UCC 4th Parliament<br>
+        </div>
+    </div>
+    <div class="image-card">
+        <img src="sta.png" alt="Display Image">
+        <p class="carddescriptionl">Hon. Uchechukwu Omoyi<br>Agricultural and Bioresource Engineering Constituency</p>
+        <div class="card-text">
+            Member of the NUESA UCC 4th Parliament<br>
+        </div>
+    </div>
+    <div class="image-card">
+        <img src="sta.png" alt="Display Image">
+        <p class="carddescriptionl">Hon. Christopher John Johnson<br>Agricultural and Bioresource Engineering Constituency</p>
+        <div class="card-text">
+            Member of the NUESA UCC 4th Parliament<br>
+        </div>
+    </div>
+    <div class="image-card">
+        <img src="ajin.jpg" alt="Display Image">
+        <p class="carddescriptionl">Hon. Ajin Abraham Ucheya<br>Chemical Engineering Constituency</p>
+        <div class="card-text">
+            Member of the NUESA UCC 4th Parliament<br>
+        </div>
+    </div>
+    <div class="image-card">
+        <img src="amama.jpg" alt="Display Image">
+        <p class="carddescriptionl">Hon. Amama Destiny<br>Civil Engineering Constituency</p>
+        <div class="card-text">
+            Member of the NUESA UCC 4th Parliament<br>
+        </div>
+    </div>
+    <div class="image-card">
+        <img src="bruno.jpg" alt="Display Image">
+        <p class="carddescriptionl">Hon. Bruno Nwankwo<br>Civil Engineering Constituency</p>
+        <div class="card-text">
+            Member of the NUESA UCC 4th Parliament<br>
+        </div>
+    </div>
+    <div class="image-card">
+        <img src="sta.png" alt="Display Image">
+        <p class="carddescriptionl">Hon. Paula Caleb<br>Computer Engineering Constituency</p>
+        <div class="card-text">
+            Member of the NUESA UCC 4th Parliament<br>
+        </div>
+    </div>
+    <div class="image-card">
+        <img src="sta.png" alt="Display Image">
+        <p class="carddescriptionl">Hon. Akanjam David Kenrick<br>Computer Engineering Constituency</p>
+        <div class="card-text">
+            Member of the NUESA UCC 4th Parliament<br>
+        </div>
+    </div>
+    <div class="image-card">
+        <img src="sta.png" alt="Display Image">
+        <p class="carddescriptionl">Hon. Ephraim Chiemerie Kenneth<br>Computer Engineering Constituency</p>
+        <div class="card-text">
+            Member of the NUESA UCC 4th Parliament<br>
+        </div>
+    </div>
+    <div class="image-card">
+        <img src="sta.png" alt="Display Image">
+        <p class="carddescriptionl">Hon. ChukwuJekwu Desmond Chidubem<br>Electrical Engineering Constituency</p>
+        <div class="card-text">
+            Member of the NUESA UCC 4th Parliament<br>
+        </div>
+    </div>
+    <div class="image-card">
+        <img src="ejike.jpg" alt="Display Image">
+        <p class="carddescriptionl">Hon. Ejike Oluomachi Miracle<br>Electrical Engineering Constituency</p>
+        <div class="card-text">
+            Member of the NUESA UCC 4th Parliament<br>
+        </div>
+    </div>
+    <div class="image-card">
+        <img src="Ederademu.jpg" alt="Display Image">
+        <p class="carddescriptionl">Hon. Ederademu Jesutekevwe<br>Mechanical Engineering Constituency</p>
+        <div class="card-text">
+            Member of the NUESA UCC 4th Parliament<br>
+        </div>
+    </div>
+    <div class="image-card">
+        <img src="ushie.jpg" alt="Display Image">
+        <p class="carddescriptionl">Hon. Ushie Felicity Awhobiwom<br>Petroleum Engineering Constituency</p>
+        <div class="card-text">
+            Member of the NUESA UCC 4th Parliament<br>
+        </div>
+    </div>
+    <div class="image-card">
+        <img src="sta.png" alt="Display Image">
+        <p class="carddescriptionl">Hon. Nkeonye Divine<br>Petroleum Engineering Constituency</p>
+        <div class="card-text">
+            Member of the NUESA UCC 4th Parliament<br>
+        </div>
+    </div>
+    </div>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+            entry.target.classList.add('visible'); 
+            }
+        });
+        }, {
+        threshold: 0.1
+        });
+        document.querySelectorAll('.descriptionl, .image-cards, .image-card, .text-container').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NUESA National Footer Layout</title>
+  <link rel="stylesheet" href="https://cloudflare.com">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    body {
+      background-color: #050a06;
+      color: #ffffff;
+      padding: 20px;
+    }
+    footer {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      background-color: #050a06;
+      padding: 16px 8px 40px 8px;
+    }
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+    }
+    .brand-title {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .crest-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+    .main-crest {
+      width: 110px;
+      height: 110px;
+      object-fit: contain;
+    }
+    .hero-heading {
+      font-size: 34px;
+      font-weight: 800;
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .tagline {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: #cccccc;
+      margin-bottom: 24px;
+    }
+    .social-links {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .social-links a {
+      color: #999999;
+      font-size: 18px;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .social-links a:hover {
+      color: #4caf50;
+    }
+    .links-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 32px;
+      row-gap: 40px;
+    }
+    .link-group-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+    .full-width-group {
+      grid-column: span 2;
+    }
+    .links-list {
+      list-style: none;
+    }
+    .links-list li {
+      margin-bottom: 16px;
+    }
+    .links-list a {
+      font-size: 14px;
+      color: #aaaaaa;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      display: inline-block;
+    }
+    .links-list a:hover {
+      color: #ffffff;
+    }
+    .scroll-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 20px;
+      background-color: #0b6623;
+      color: #ffffff;
+      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+  <footer>
+    <div class="crest-container">
+      <img src="logo.png" alt="NUESA Crest Gear" class="main-crest">
+      <h1 class="hero-heading">Nuesa.<br>UCC</h1>
+    </div>
+    <p class="tagline">
+      NUESA-UCC (Nigerian Universities Engineering Students Association, University of Calabar Chapter) serves as the primary student wing of the Nigerian Society of Engineers on campus.
+    </p>
+    <div class="links-grid">
+      <div class="link-group">
+        <h2 class="link-group-title">Association</h2>
+        <ul class="links-list">
+          <li><a href="#" id="hiscription">About Us</a></li>
+          <li><a href="#">Our Leadership</a></li>
+          <li><a href="#">IT Opportunities</a></li>
+          <li><a href="javascript:void(0)" onclick="window.open('https://wa.me/+2348097730000', '_blank')">Contact Us</a></li>
+        </ul>
+    </div>
+    <button class="scroll-btn" aria-label="Scroll to top">
+      <i class="fas fa-chevron-up"></i>
+    </button>
+  </footer>
+</body>
+</html>

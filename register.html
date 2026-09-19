@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>NUESA_UCC Portal</title>
+        <link rel="preconnect" href="https://googleapis.com">
+        <link rel="preconnect" href="https://gstatic.com" crossorigin>
+        <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <style>
+            body {
+                min-height: 100vh;
+                width: 100%;
+                margin: 0;
+                color: white;
+                background: radial-gradient(circle at 50% 25%, rgba(10, 45, 20, 0.6) 0%, rgba(5, 10, 5, 0.98) 80%), #050b06;
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+                box-sizing: border-box;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .navbar {
+                width: 100%;
+                max-width: 480px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 16px 20px;
+                box-sizing: border-box;
+            }
+            .brand-container {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            .logo-img {
+                width: 40px;
+                height: 40px;
+                object-fit: contain;
+            }
+            .brand-text {
+                display: flex;
+                flex-direction: column;
+                line-height: 1.2;
+            }
+            .nav-brand {
+                font-size: 14px;
+                font-weight: 700;
+                letter-spacing: 0.5px;
+                text-transform: uppercase;
+                color: white;
+            }
+            .body-subtitle {
+                font-size: 11px;
+                font-weight: 500;
+                color: #a0a0a0;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+            }
+            .nav-actions {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+            }
+            .icon-btn {
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 4px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .form-card {
+                width: 90%;
+                max-width: 440px;
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 24px;
+                padding: 28px 24px;
+                margin-top: 10px;
+                margin-bottom: 30px;
+                box-sizing: border-box;
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+                backdrop-filter: blur(10px); /* Subtle frosted glass overlay blend */
+            }
+            .form-title {
+                font-size: 22px;
+                font-weight: 600;
+                margin-top: 0;
+                margin-bottom: 24px;
+                letter-spacing: -0.3px;
+            }
+            .form-group {
+                margin-bottom: 20px;
+                position: relative;
+            }
+            .form-label {
+                display: block;
+                font-size: 13px;
+                font-weight: 500;
+                margin-bottom: 8px;
+                color: #e0e0e0;
+            }
+            .required-star {
+                color: #ff6b4a;
+                margin-left: 2px;
+            }
+            .form-input {
+                width: 100%;
+                background: rgba(0, 0, 0, 0.2);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 12px;
+                padding: 14px 16px;
+                font-family: inherit;
+                font-size: 14px;
+                color: #ffffff;
+                box-sizing: border-box;
+                transition: border-color 0.2s, background-color 0.2s;
+            }
+            .form-input:focus {
+                outline: none;
+                border-color: #15803d;
+                background: rgba(0, 0, 0, 0.35);
+            }
+            .form-input::placeholder {
+                color: #555c56;
+            }
+            select.form-input {
+                appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                cursor: pointer;
+                padding-right: 40px;
+            }
+            .select-wrapper {
+                position: relative;
+                width: 100%;
+            }
+            .select-wrapper::after {
+                content: "";
+                position: absolute;
+                right: 16px;
+                top: 50%;
+                transform: translateY(-50%);
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 5px solid #7c837d;
+                pointer-events: none;
+            }
+            .input-hint {
+                font-size: 11px;
+                color: #555c56;
+                margin-top: 6px;
+                line-height: 1.4;
+            }
+            .submit-btn {
+                width: 100%;
+                background-color: #15803d;
+                color: #ffffff;
+                border: none;
+                border-radius: 12px;
+                padding: 14px;
+                font-family: inherit;
+                font-size: 14px;
+                font-weight: 600;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                margin-top: 28px;
+                transition: background-color 0.2s, transform 0.1s;
+            }
+            .submit-btn:hover {
+                background-color: #166534;
+            }
+            .submit-btn:active {
+                transform: scale(0.99);
+            }
+            .footer-help {
+                width: 90%;
+                max-width: 440px;
+                text-align: center;
+                font-size: 11px;
+                color: #64748b;
+                line-height: 1.6;
+                margin-bottom: 20px;
+            }
+            .footer-link {
+                color: #15803d;
+                text-decoration: none;
+            }
+            .footer-link:hover {
+                text-decoration: underline;
+            }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand-container">
+            <img src="logo.png" alt="NUESA Logo" class="logo-img">
+            <div class="brand-text">
+                <span class="nav-brand">Nigerian Universities Engineering Students Association</span>
+                <span class="body-subtitle">NUESA_UCC</span>
+            </div>
+        </div>
+    </nav>
+    <main class="form-card">
+        <h1 class="form-title">Personal Information</h1>
+        <form id="infoForm" action="mailto:hatchprope@gmail.com" method="POST" enctype="text/plain">
+            <div class="form-group">
+                <label class="form-label" for="matno">Matric Number<span class="required-star">*</span></label>
+                <input class="form-input" type="text" id="matno" name="matno" placeholder="e.g. 22/123456789" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="department">Department<span class="required-star">*</span></label>
+                <div class="select-wrapper">
+                    <select name="department" class="form-input" required>
+                        <option value="" disabled selected hidden>Select Department</option>
+                        <option value="Civil Engineering">Civil Engineering</option>
+                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+                        <option value="Computer Engineering">Computer Engineering</option>
+                        <option value="Electrical Engineering">Electrical Engineering</option>
+                        <option value="Chemical Engineering">Chemical Engineering</option>
+                        <option value="Petroleum Engineering">Petroleum Engineering</option>
+                        <option value="Agric Engineering">Agric Engineering</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="emailadress">Email Adress<span class="required-star">*</span></label>
+                <input class="form-input" type="text" id="emailadress" name="emailadress" placeholder="e.g. jonny@gmail.com" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="phonenumber">Phone Number<span class="required-star">*</span></label>
+                <input class="form-input" type="number" id="phonenumber" name="phonenumber" placeholder="e.g. 08012345678" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="gender">Gender<span class="required-star">*</span></label>
+                <div class="select-wrapper">
+                    <select class="form-input" id="gender" name="gender" required>
+                        <option value="" disabled selected hidden>Select gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="submit-btn">
+                Verify and Login
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+            <div class="login-redirect-container">
+    <p class="redirect-text">
+        Already have an account? 
+        <a href="index.html" class="login-link-btn">Login</a>
+    </p>
+</div>
+        </form>
+    </main>
+    <script>
+    document.getElementById('infoForm').addEventListener('submit', function(e) {
+        setTimeout(() => {
+            document.getElementById('infoForm').innerHTML = `
+                <div style="text-align: center; padding: 40px 20px; font-family: sans-serif;">
+                    <div style="font-size: 50px; margin-bottom: 20px;">⏳</div>
+                    <h2 style="color: #333; margin-bottom: 10px;">Verification Pending</h2>
+                    <p style="color: #666; line-height: 1.6; max-width: 320px; margin: 0 auto; font-size: 16px;">
+                        Your submission request has been processed. Please **wait for 24 hours** before attempting to login again.
+                    </p>
+                </div>
+            `;
+        }, 500);
+    });
+</script>
+
+</body>
+</html>

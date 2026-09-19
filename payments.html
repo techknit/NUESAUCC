@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>NUESA-UCC Student Portal</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .navbar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 14px 20px;
+                backdrop-filter: blur(12px);
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                box-sizing: border-box;
+                z-index: 9999;
+            }
+            .nav-brand {
+                font-weight: 700;
+                font-size: 13px;
+                letter-spacing: 0.3px;
+                line-height: 1.3;
+                color: #ffffff;
+            }
+            .menu-wraper {
+                margin-left: auto;
+                position: relative;
+                display: inline-block;
+            }
+            .dots-btn {
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+            .menu-item {
+                display: block;
+                padding: 12px 16px;
+                text-decoration: none;
+                color: #ffffff;
+                font-size: 14px;
+                font-weight: 500;
+                transition: all 0.2s ease-in-out;
+            }
+            .menu-item:hover {
+                background-color: #f1f1f1;
+                background-color: rgba(29, 161, 83, 0.15);
+                color: #1da153;
+                padding-left: 24px;
+            }
+            .menu-item.active {
+                font-weight: bold;
+                background-color: #a78575;
+            }
+            .menu-item.danger {
+                color: red;
+                border-top: 1px solid #eee;
+            }
+            .dropdown.hidden {
+                display: none;
+            }
+            .dropdown {
+                position: absolute;
+                margin-top: 4px;
+                z-index: 1000;
+                top: 0px;
+                right: 0px;
+                width: 250px;
+                height: auto;
+                border-radius: 8px;
+                background: linear-gradient(
+                    135deg,
+                    rgba(114, 107, 107, 0.45) 0%,
+                    rgba(92, 85, 85, 0.2) 40%,
+                    rgba(240, 240, 240, 0.15) 60%,
+                    rgba(55, 56, 59, 0.35) 100%
+                ) !important;
+                background-color: #000000;
+                backdrop-filter: blur(20px) !important;
+                -webkit-backdrop-filter: blur(20px) !important;
+                border: 1px solid rgba(225, 225, 225, 0.5) !important;
+                box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.3) !important;
+            }
+            menu-item:hover {
+                background-color: rgba(225, 225, 225, 0.3);
+            }
+            body {
+                min-height: 100vh;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+                background: linear-gradient(180deg, rgba(6, 12, 8, 0.94) 0%, rgba(3, 7, 4, 0.98) 100%), 
+                            url('https://unsplash.com');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                position: relative;
+                overflow-x: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="portal-section">    
+            <nav class="navbar">
+                <img src="logo.png" style="width: 50px; height: 50px;">
+                <div class="nav-brand" >Nigerian Universities Engineering Students Association
+                    <br style="color: #01c21b;">NUESA_UCC</br>
+                </div>
+                <div class="menu-wraper">
+                    <button id="dots-btn" class="dots-btn">&#8942;</button>
+                    <div id="dropdown" class="dropdown hidden">
+                        <a href="updates.html" class="menu-item">Latest News and Updates 📰</a>
+                        <a href="payments.html" class="menu-item">Make payments</a>
+                        <a href="voting.html" class="menu-item active">Voting polls</a>
+                        <br>
+                        <a href="https://wa.me/2348097730000" class="menu-item">Contact us ☎️</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <script>
+            const dotsbtn = document.getElementById('dots-btn');
+            const dropdownmenu = document.getElementById('dropdown');
+
+            dotsbtn.addEventListener('click', function(event) {
+                dropdownmenu.classList.toggle('hidden');
+                event.stopPropagation();
+            });
+            window.addEventListener('click',function(){
+                if (!dropdownmenu.classList.contains('hidden')){
+                    dropdownmenu.classList.add('hidden');
+                }
+            });
+
+            function switchPage(pageId) {
+                console.log("switching to page: " + pageId);
+            }
+        </script>
+    </body>
+</html>
+<html>
+    <head>
+        <style>
+            .text-container {
+                background-color: transparent;
+                color: #ffffff;
+                border: 1px solid rgba(245, 20, 20, 0.2);
+                border-radius: 10px;
+                cursor: pointer;
+                text-align: center;
+                text-decoration: none;
+                opacity: 0;
+                transform: translateY(10px);
+                transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+            }
+            .text-container.visible {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            .littlewriteups {
+                color: #02c737;
+                text-align: left;
+                font-family: monospace;
+                font-size: small;
+                font-weight: 1000;
+            }
+            .bar-green {
+                width: 35%;
+                height: 4px;
+                border-radius: 2px;
+                background: linear-gradient(90deg, 
+                    #0e832b 0%, 
+                    #0e832b 40%, 
+                    #e0e0e0 50%, 
+                    #0e832b 60%, 
+                    #0e832b 100%
+                );
+                background-size: 200% 100%;
+                animation: moveSilver 2.5s linear infinite;
+            }
+            @keyframes moveSilver {
+                0% {
+                    background-position: 200% 0;
+                }
+                100% {
+                    background-position: -200% 0;
+            }
+        }
+        .bar-red {
+                width: 20%;
+                height: 4px;
+                border-radius: 2px;
+                background: linear-gradient(90deg, 
+                    #83430e 0%, 
+                    #83290e 40%, 
+                    #e0e0e0 50%, 
+                    #83330e 60%, 
+                    #83430e 100%
+                );
+                background-size: 200% 100%;
+                animation: moveSilver 2.5s linear infinite;
+            }
+            @keyframes moveSilver {
+                0% {
+                    background-position: 200% 0;
+                }
+                100% {
+                    background-position: -200% 0;
+            }
+        }
+        </style>
+    </head>
+    <body>
+        <p class="littlewriteups" style="padding-top: 150px;">Payments and collections</p>
+        <div class="bar-green"></div>
+        <br>
+        <div class="bar-red"></div>
+        <br>
+        <br>
+        <div class="text-container">
+            <br>🧾
+            <a href="https://wa.me/2348097730000">
+                <p style="font-size: x-large; font-weight: 1000px; font-family: monospace;">School fee payment and course registeration</p>
+            </a>
+            <br>
+        </div>
+        <br>
+        <div class="text-container">
+            <br>🧾
+            <a href="https://wa.me/2348097730000">
+                <p style="font-size: x-large; font-weight: 1000px; font-family: monospace;">Acceptance fee payment and online screening</p>
+            </a>
+            <br>
+        </div>
+        <hr class="divider">
+        <script>
+        const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+            entry.target.classList.add('visible'); 
+            }
+        });
+        }, {
+        threshold: 0.1
+        });
+        document.querySelectorAll('.descriptionl, .image-cards, .image-card, .text-container').forEach(el => observer.observe(el));
+    </script>
+    </body>
+</html>
