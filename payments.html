@@ -97,15 +97,9 @@
                 position: relative;
                 overflow-x: hidden;
             }
-            .container {
-                gap: 10px;
-                flex-wrap: wrap;
-                padding-left: 15px;
-                padding-right: 15px;
-            }
         </style>
     </head>
-    <body class="container">
+    <body>
         <div id="portal-section">    
             <nav class="navbar">
                 <img src="logo.png" style="width: 50px; height: 50px;">
@@ -148,9 +142,9 @@
     <head>
         <style>
             .text-container {
-                background-color: white;
+                background-color: rgb(1, 41, 8);
                 color: #ffffff;
-                border: 12px solid rgb(54, 17, 3);
+                border: 3px solid rgb(54, 17, 3);
                 border-radius: 10px;
                 cursor: pointer;
                 text-align: center;
@@ -158,6 +152,9 @@
                 opacity: 0;
                 transform: translateY(10px);
                 transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+                width: 100%;
+                font-size: xx-large;
+                font-family: fantasy;
             }
             .text-container.visible {
                 opacity: 1;
@@ -169,6 +166,147 @@
                 font-family: monospace;
                 font-size: small;
                 font-weight: 1000;
+            }
+            .container {
+                gap: 10px;
+                flex-wrap: wrap;
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            .brand-container {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            .brand-text {
+                display: flex;
+                flex-direction: column;
+                line-height: 1.2;
+            }
+            .form-card {
+                width: 90%;
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 24px;
+                padding: 28px 24px;
+                margin-top: 10px;
+                margin-bottom: 30px;
+                box-sizing: border-box;
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+                backdrop-filter: blur(10px);
+            }
+            .form-title {
+                font-size: 22px;
+                font-weight: 600;
+                margin-top: 0;
+                margin-bottom: 24px;
+                letter-spacing: -0.3px;
+            }
+            .form-group {
+                margin-bottom: 20px;
+                position: relative;
+            }
+            .form-label {
+                display: block;
+                font-size: 13px;
+                font-weight: 500;
+                margin-bottom: 8px;
+                color: #000000;
+            }
+            .required-star {
+                color: #ff6b4a;
+                margin-left: 2px;
+            }
+            .form-input {
+                width: 100%;
+                background: rgba(0, 0, 0, 0.2);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 12px;
+                padding: 14px 16px;
+                font-family: inherit;
+                font-size: 14px;
+                color: #1b1a1a;
+                box-sizing: border-box;
+                transition: border-color 0.2s, background-color 0.2s;
+            }
+            .form-input:focus {
+                outline: none;
+                border-color: #15803d;
+                background: rgba(0, 0, 0, 0.35);
+            }
+            .form-input::placeholder {
+                color: #535c54;
+            }
+            select.form-input {
+                appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                cursor: pointer;
+                padding-right: 40px;
+            }
+            .select-wrapper {
+                position: relative;
+                width: 100%;
+            }
+            .select-wrapper::after {
+                content: "";
+                position: absolute;
+                right: 16px;
+                top: 50%;
+                transform: translateY(-50%);
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 5px solid #7c837d;
+                pointer-events: none;
+            }
+            .input-hint {
+                font-size: 11px;
+                color: #555c56;
+                margin-top: 6px;
+                line-height: 1.4;
+            }
+            .submit-btn {
+                width: 100%;
+                background-color: #15803d;
+                color: #ffffff;
+                border: none;
+                border-radius: 12px;
+                padding: 14px;
+                font-family: inherit;
+                font-size: 14px;
+                font-weight: 600;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                margin-top: 28px;
+                transition: background-color 0.2s, transform 0.1s;
+            }
+            .submit-btn:hover {
+                background-color: #166534;
+            }
+            .submit-btn:active {
+                transform: scale(0.99);
+            }
+            .footer-help {
+                width: 90%;
+                max-width: 440px;
+                text-align: center;
+                font-size: 11px;
+                color: #64748b;
+                line-height: 1.6;
+                margin-bottom: 20px;
+            }
+            .footer-link {
+                color: #15803d;
+                text-decoration: none;
+            }
+            .footer-link:hover {
+                text-decoration: underline;
+            }
+            .hidden {
+                display: none !important;
             }
             .bar-green {
                 width: 35%;
@@ -216,41 +354,217 @@
         }
         </style>
     </head>
-    <body>
+    <body class="container">
         <p class="littlewriteups" style="padding-top: 60px;">Payments and collections</p>
         <div class="bar-green"></div>
         <br>
         <div class="bar-red"></div>
         <br>
         <br>
-        <div class="text-container">
-            <br>🧾
-            <a href="https://wa.me/2348097730000">
-                <p style="font-size: x-large; font-weight: 1000px; font-family: monospace;">School fee payment and course registeration</p>
-            </a>
-            <br>
+        <div>
+            <button id="text-container" class="text-container"> Click to pay fees and register courses</button>
+            <main id="infoForm" class="form-card hidden">
+                <h1 class="form-title">Personal Information</h1>
+                <form action="https://formspree.io" method="POST">
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="matno">Matric Number<span class="required-star">*</span></label>
+                        <input class="form-input" type="text" id="matno" name="Matric Number" placeholder="e.g. 22/123456789" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="department">Department<span class="required-star">*</span></label>
+                        <div class="select-wrapper">
+                            <select class="form-input" id="department" name="Department" required>
+                                <option value="" disabled selected hidden>Select department</option>
+                                <option value="Civil Engineering">Civil Engineering</option>
+                                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                <option value="Computer Engineering">Computer Engineering</option>
+                                <option value="Electrical Engineering">Electrical Engineering</option>
+                                <option value="Chemical Engineering">Chemical Engineering</option>
+                                <option value="Petroleum Engineering">Petroleum Engineering</option>
+                                <option value="Agric Engineering">Agric Engineering</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="emailadress">Email Address<span class="required-star">*</span></label>
+                        <input class="form-input" type="email" id="emailadress" name="Email" placeholder="e.g. jonny@gmail.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="phonenumber">Phone Number<span class="required-star">*</span></label>
+                        <input class="form-input" type="number" id="phonenumber" name="Phone Number" placeholder="e.g. 08012345678" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="gender">Gender<span class="required-star">*</span></label>
+                        <div class="select-wrapper">
+                            <select class="form-input" id="gender" name="Gender" required>
+                                <option value="" disabled selected hidden>Select gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        Verify and Login
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                    <div class="login-redirect-container">
+                        <p class="redirect-text">
+                            Don't have an account? 
+                            <a href="register.html" class="login-link-btn">Register</a>
+                        </p>
+                    </div>
+                </form>
+            </main>
         </div>
         <br>
         <hr class="divider">
         <br>
         <div class="text-container">
             <br>🧾
-            <a href="https://wa.me/2348097730000">
+            <a href="https://wa.me">
                 <p style="font-size: x-large; font-weight: 1000px; font-family: monospace;">Acceptance fee payment and online screening</p>
             </a>
             <br>
         </div>
         <script>
-        const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-            entry.target.classList.add('visible'); 
+            const textcontainer = document.getElementById('text-container');
+            const infoForm = document.getElementById('infoForm');
+            textcontainer.addEventListener('click', function(event) {
+                infoForm.classList.toggle('hidden');
+                event.stopPropagation();
+            });
+
+            function switchPage(pageId) {
+                console.log("switching to page: " + pageId);
+            }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible'); 
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            document.querySelectorAll('.descriptionl, .image-cards, .image-card, .text-container').forEach(el => observer.observe(el));
+        </script>
+        <script>
+            const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                entry.target.classList.add('visible'); 
+                }
+            });
+            }, {
+            threshold: 0.1
+            });
+            document.querySelectorAll('.descriptionl, .image-cards, .image-card, .text-container').forEach(el => observer.observe(el));
+        </script>
+    </body>
+</html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            
+    </style>
+</head>
+<body>
+    <main class="form-card">
+        <h1 class="form-title">Personal Information</h1>
+        <form id="infoForm" action="#" method="POST">
+            <div class="form-group">
+                <label class="form-label" for="matno">Matric Number<span class="required-star">*</span></label>
+                <input class="form-input" type="text" id="matno" name="matno" placeholder="e.g. 22/123456789" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="department">Department<span class="required-star">*</span></label>
+                <div class="select-wrapper">
+                    <select class="form-input" id="department" name="department" required>
+                        <option value="" disabled selected hidden>Select department</option>
+                        <option value="Civil Engineering">Civil Engineering</option>
+                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+                        <option value="Computer Engineering">Computer Engineering</option>
+                        <option value="Electrical Engineering">Electrical Engineering</option>
+                        <option value="Chemical Engineering">Chemical Engineering</option>
+                        <option value="Petroleum Engineering">Petroleum Engineering</option>
+                        <option value="Agric Engineering">Agric Engineering</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="emailadress">Email Adress<span class="required-star">*</span></label>
+                <input class="form-input" type="text" id="emailadress" name="emailadress" placeholder="e.g. jonny@gmail.com" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="phonenumber">Phone Number<span class="required-star">*</span></label>
+                <input class="form-input" type="number" id="phonenumber" name="phonenumber" placeholder="e.g. 08012345678" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="gender">Gender<span class="required-star">*</span></label>
+                <div class="select-wrapper">
+                    <select class="form-input" id="gender" name="gender" required>
+                        <option value="" disabled selected hidden>Select gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="submit-btn">
+                Verify and Login
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+            <div class="login-redirect-container">
+    <p class="redirect-text">
+        Dont have an account? 
+        <a href="register.html" class="login-link-btn">Register</a>
+    </p>
+</div>
+        </form>
+    </main>
+    <script>
+        const allowedUsers = [
+            {
+                "matno": "25/184145145",
+                "department": "Computer Engineering",
+                "emailadress": "onunkwodaniel47@gmail.com",
+                "phonenumber": "08107992922"
+            },
+            {
+                "matno": "22/123456789",
+                "department": "Civil Engineering",
+                "emailadress": "jonny@gmail.com",
+                "phonenumber": "08012345678"
+            },
+            {
+                "matno": "22/123456788",
+                "department": "Mechanical Engineering",
+                "emailadress": "jonyy@gmail.com",
+                "phonenumber": "08011345678"
+            }
+        ];
+        document.getElementById('infoForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            const userMatno = document.getElementById('matno').value.trim();
+            const userDepartment = document.getElementById('department').value.trim();
+            const userdepartment = document.getElementById('department').value.trim();
+            const userEmailadress= document.getElementById('emailadress').value.trim().toLowerCase();
+            const userPhonenumber = document.getElementById('phonenumber').value.trim();
+            const matchFound = allowedUsers.some(user => 
+                user.matno === userMatno && user.department === userDepartment && user.emailadress.toLowerCase() === userEmailadress && user.phonenumber === userPhonenumber
+            );
+            if (matchFound) {
+                alert('Verification successful! Access granted.');
+                window.location.href = 'updates.html'; 
+            } else {
+                alert('Access Denied: Email or phone does not match.');
             }
         });
-        }, {
-        threshold: 0.1
-        });
-        document.querySelectorAll('.descriptionl, .image-cards, .image-card, .text-container').forEach(el => observer.observe(el));
     </script>
-    </body>
+</body>
 </html>
