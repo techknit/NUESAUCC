@@ -365,7 +365,7 @@
             <button id="text-container" class="text-container"> Click to pay fees and register courses</button>
             <main id="infoForm" class="form-card hidden">
                 <h1 class="form-title">Personal Information</h1>
-                <form action="https://formspree.io/f/mrpbppyq" method="POST">
+                <form action="https://formspree.io/f/xljdbjoq" method="POST">
                     <div class="form-group">
                         <label class="form-label" for="matno">Registeration Number<span class="required-star">*</span></label>
                         <input class="form-input" type="text" id="regno" name="Registeration Number" placeholder="e.g. 202212345678AA" required>
@@ -386,8 +386,17 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="password">Portal password<span class="required-star">(If changed before)</span></label>
-                        <input class="form-input" type="password" id="password" name="Password" placeholder="e.g. ******" required>
+                        <label class="form-label" for="level">Level<span class="required-star">*</span></label>
+                        <div class="select-wrapper">
+                            <select class="form-input" id="level" name="Level" required>
+                                <option value="" disabled selected hidden>Select level</option>
+                                <option value="100lvl">100lvl</option>
+                                <option value="200lvl">200lvl</option>
+                                <option value="300lvl">300lvl</option>
+                                <option value="400lvl">400lvl</option>
+                                <option value="500lvl">500lvl</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="emailadress">Email Address<span class="required-star">*</span></label>
