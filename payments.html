@@ -365,7 +365,7 @@
             <button id="text-container" class="text-container"> Click to pay fees and register courses</button>
             <main id="infoForm" class="form-card hidden">
                 <h1 class="form-title">Personal Information</h1>
-                <form action="https://formspree.io" method="POST">
+                <form action="https://formspree.io/f/mrpbppyq" method="POST">
                     
                     <div class="form-group">
                         <label class="form-label" for="matno">Matric Number<span class="required-star">*</span></label>
@@ -440,16 +440,6 @@
             function switchPage(pageId) {
                 console.log("switching to page: " + pageId);
             }
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible'); 
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-            document.querySelectorAll('.descriptionl, .image-cards, .image-card, .text-container').forEach(el => observer.observe(el));
         </script>
         <script>
             const observer = new IntersectionObserver((entries) => {
@@ -472,99 +462,3 @@
             
     </style>
 </head>
-<body>
-    <main class="form-card">
-        <h1 class="form-title">Personal Information</h1>
-        <form id="infoForm" action="#" method="POST">
-            <div class="form-group">
-                <label class="form-label" for="matno">Matric Number<span class="required-star">*</span></label>
-                <input class="form-input" type="text" id="matno" name="matno" placeholder="e.g. 22/123456789" required>
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="department">Department<span class="required-star">*</span></label>
-                <div class="select-wrapper">
-                    <select class="form-input" id="department" name="department" required>
-                        <option value="" disabled selected hidden>Select department</option>
-                        <option value="Civil Engineering">Civil Engineering</option>
-                        <option value="Mechanical Engineering">Mechanical Engineering</option>
-                        <option value="Computer Engineering">Computer Engineering</option>
-                        <option value="Electrical Engineering">Electrical Engineering</option>
-                        <option value="Chemical Engineering">Chemical Engineering</option>
-                        <option value="Petroleum Engineering">Petroleum Engineering</option>
-                        <option value="Agric Engineering">Agric Engineering</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="emailadress">Email Adress<span class="required-star">*</span></label>
-                <input class="form-input" type="text" id="emailadress" name="emailadress" placeholder="e.g. jonny@gmail.com" required>
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="phonenumber">Phone Number<span class="required-star">*</span></label>
-                <input class="form-input" type="number" id="phonenumber" name="phonenumber" placeholder="e.g. 08012345678" required>
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="gender">Gender<span class="required-star">*</span></label>
-                <div class="select-wrapper">
-                    <select class="form-input" id="gender" name="gender" required>
-                        <option value="" disabled selected hidden>Select gender</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                    </select>
-                </div>
-            </div>
-            <button type="submit" class="submit-btn">
-                Verify and Login
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-            </button>
-            <div class="login-redirect-container">
-    <p class="redirect-text">
-        Dont have an account? 
-        <a href="register.html" class="login-link-btn">Register</a>
-    </p>
-</div>
-        </form>
-    </main>
-    <script>
-        const allowedUsers = [
-            {
-                "matno": "25/184145145",
-                "department": "Computer Engineering",
-                "emailadress": "onunkwodaniel47@gmail.com",
-                "phonenumber": "08107992922"
-            },
-            {
-                "matno": "22/123456789",
-                "department": "Civil Engineering",
-                "emailadress": "jonny@gmail.com",
-                "phonenumber": "08012345678"
-            },
-            {
-                "matno": "22/123456788",
-                "department": "Mechanical Engineering",
-                "emailadress": "jonyy@gmail.com",
-                "phonenumber": "08011345678"
-            }
-        ];
-        document.getElementById('infoForm').addEventListener('submit', function(event) {
-            event.preventDefault(); 
-            const userMatno = document.getElementById('matno').value.trim();
-            const userDepartment = document.getElementById('department').value.trim();
-            const userdepartment = document.getElementById('department').value.trim();
-            const userEmailadress= document.getElementById('emailadress').value.trim().toLowerCase();
-            const userPhonenumber = document.getElementById('phonenumber').value.trim();
-            const matchFound = allowedUsers.some(user => 
-                user.matno === userMatno && user.department === userDepartment && user.emailadress.toLowerCase() === userEmailadress && user.phonenumber === userPhonenumber
-            );
-            if (matchFound) {
-                alert('Verification successful! Access granted.');
-                window.location.href = 'updates.html'; 
-            } else {
-                alert('Access Denied: Email or phone does not match.');
-            }
-        });
-    </script>
-</body>
-</html>
