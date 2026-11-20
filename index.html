@@ -795,15 +795,32 @@
         const containers = document.querySelectorAll('.text-container');
 
         containers.forEach(container => {
-            container.addEventListener('click', () => {
+            container.addEventListener('click', (event) => {
+            event.stopPropagation();
             const nextElement = container.nextElementSibling;
+
+            document.querySelectorAll('.executive-gri.show').forEach(grid => {
+                if (grid !== nextElement) {
+                grid.classList.remove('show');
+                }
+            });
 
             if (nextElement && nextElement.classList.contains('executive-gri')) {
                 nextElement.classList.toggle('show');
             }
             });
         });
+
+        document.addEventListener('click', (event) => {
+
+            if (!event.target.closest('.executive-gri')) {
+            document.querySelectorAll('.executive-gri.show').forEach(grid => {
+                grid.classList.remove('show');
+            });
+            }
+        });
     </script>
+
     
     <br>
     <br>
